@@ -11,7 +11,7 @@ pygame.display.set_icon(icon)
 
 
 
-square = pygame.Surface((50, 170))
+square = pygame.Surface((100, 250))
 square.fill('Blue')
 
 running = True
@@ -20,7 +20,7 @@ while running:
 
     screen.blit(square, (10, 0))
 
-    pygame.draw.circle(screen, 'Orange', (250, 150), 30)
+    pygame.draw.circle(square, 'Orange', (20, 20), 20)
 
 
     pygame.display.update()
