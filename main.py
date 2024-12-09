@@ -52,6 +52,9 @@ restart_lable = label.render("RESTART", False, (115, 132, 148))
 
 restart_lable_rect = restart_lable.get_rect(topleft=(400, 500))
 
+bullet = pygame.image.load('files/патрон.png').convert_alpha()
+bullets = []
+
 gameplay = True
 
 running = True
@@ -110,6 +113,15 @@ while running:
         bg_x -= 2
         if bg_x == -950:
             bg_x = 0
+
+        if keys[pygame.K_b]:
+            bullets.append(bullet.get_rect(topleft=(player_x + 30, player_y + 10)))
+
+        if bullets:
+            for el in bullets:
+                screen.blit(bullet, (el.x, el.y))
+                el.x += 4
+
 
     else:
         screen.fill((87, 88, 89))
