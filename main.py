@@ -14,14 +14,16 @@ pygame.display.set_icon(icon)
 square = pygame.Surface((100, 250))
 square.fill('Blue')
 
+myfont = pygame.font.Font('files/shadow-whisper-demo.regular.ttf', 40)
+text_surface = myfont.render('Matvey', False, 'White')
+
 running = True
 
 while running:
 
     screen.blit(square, (10, 0))
-
-    pygame.draw.circle(square, 'Orange', (20, 20), 20)
-
+    screen.blit(text_surface, (300, 100))
+    pygame.draw.circle(screen, 'Orange', (20, 20), 20)
 
     pygame.display.update()
 
