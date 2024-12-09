@@ -9,11 +9,16 @@ pygame.display.set_caption('PyGame')
 icon = pygame.image.load('files/i.png')
 pygame.display.set_icon(icon)
 
-running = True
 
+
+square = pygame.Surface((50, 170))
+square.fill('Blue')
+
+running = True
 
 while running:
 
+    screen.blit(square, (0, 0))
 
     pygame.display.update()
 
