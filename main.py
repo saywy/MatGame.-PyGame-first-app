@@ -40,7 +40,7 @@ player_y = 400
 is_jump = False
 jump_count = 9
 
-bg_sound = pygame.mixer.Sound('files/SigmaSong.mp3')
+bg_sound = pygame.mixer.Sound('files/LOSTMANE.mp3')
 bg_sound.play()
 
 sigma_timer = pygame.USEREVENT + 1
@@ -151,11 +151,10 @@ while running:
             running = False
             pygame.quit()
         if event.type == sigma_timer:
-            sigma_list_in_game.append(sigma.get_rect(topleft=(955, 400)))
+            sigma_list_in_game.append(sigma.get_rect(topleft=(955, 380)))
 
         if gameplay and event.type == pygame.KEYUP and event.key == pygame.K_b and bullets_left > 0:
             bullets.append(bullet.get_rect(topleft=(player_x + 30, player_y + 10)))
             bullets_left -= 1
 
     clock.tick(15)
-
