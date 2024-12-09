@@ -25,10 +25,8 @@ walk_right = [
     pygame.image.load('files/right/4.png').convert_alpha()
 ]
 
-
-
 sigma = pygame.image.load('files/sigma.png').convert_alpha()
-sigma_x = 955
+sigma_list_in_game = []
 
 player_anim_count = 0
 bg_x = 0
@@ -38,23 +36,29 @@ player_x = 150
 player_y = 400
 
 is_jump = False
-jump_count = 10
+jump_count = 9
 
 bg_sound = pygame.mixer.Sound('files/SigmaSong.mp3')
 bg_sound.play()
+
+sigma_timer = pygame.USEREVENT + 1
+pygame.time.set_timer(sigma_timer, 2500)
 
 running = True
 while running:
 
     screen.blit(bg, (bg_x, 0))
     screen.blit(bg, (bg_x + 950, 0))
-    screen.blit(sigma, (sigma_x, 400))
 
     player_rect = walk_left[0].get_rect(topleft=(player_x, player_y))
-    sigma_rect = sigma.get_rect(topleft=(sigma_x, 400))
 
-    if player_rect.colliderect(sigma_rect):
-        print('You lose')
+    if sigma_list_in_game:
+        for el in sigma_list_in_game:
+            screen.blit(sigma, el)
+            el.x -= 10
+
+            if player_rect.colliderect(el):
+                print('You lose')
 
     keys = pygame.key.get_pressed()
 
@@ -65,14 +69,14 @@ while running:
 
     if (keys[pygame.K_a] or keys[pygame.K_LEFT]) and player_x > 50:
         player_x -= player_speed
-    elif (keys[pygame.K_d] or keys[pygame.K_RIGHT]) and player_x < 500:
+    elif (keys[pygame.K_d] or keys[pygame.K_RIGHT]) and player_x < 850:
         player_x += player_speed
 
     if not is_jump:
         if keys[pygame.K_SPACE] or keys[pygame.K_UP]:
             is_jump = True
     else:
-        if jump_count >= -10:
+        if jump_count >= -9:
             if jump_count > 0:
                 player_y -= (jump_count ** 2) / 2
             else:
@@ -81,7 +85,7 @@ while running:
             jump_count -= 1
         else:
             is_jump = False
-            jump_count = 10
+            jump_count = 9
 
     if player_anim_count == 3:
         player_anim_count = 0
@@ -92,13 +96,13 @@ while running:
     if bg_x == -950:
         bg_x = 0
 
-    sigma_x -= 10
-
     pygame.display.update()
 
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
             pygame.quit()
+        if event.type == sigma_timer:
+            sigma_list_in_game.append(sigma.get_rect(topleft=(955, 400)))
 
     clock.tick(15)
