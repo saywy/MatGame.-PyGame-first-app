@@ -3,7 +3,7 @@ import pygame
 pygame.init()
 
 
-screen = pygame.display.set_mode((1000, 1000))
+screen = pygame.display.set_mode((700, 550))
 pygame.display.set_caption('PyGame')
 
 icon = pygame.image.load('files/i.png')
