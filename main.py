@@ -46,6 +46,9 @@ bg_sound.play()
 sigma_timer = pygame.USEREVENT + 1
 pygame.time.set_timer(sigma_timer, 2500)
 
+label = pygame.font.Font('files/karedoks-demo.regular.ttf', 40)
+lose_lable = label.render("You've lost", False, (193, 196, 199))
+
 gameplay = True
 
 
@@ -108,6 +111,7 @@ while running:
 
     else:
         screen.fill((87, 88, 89))
+        screen.blit(lose_lable, (400, 250))
 
 
     pygame.display.update()
