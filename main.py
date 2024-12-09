@@ -32,8 +32,6 @@ bg_x = 0
 player_speed = 5
 player_x = 150
 
-
-
 bg_sound = pygame.mixer.Sound('files/LOSTMANE.mp3')
 bg_sound.play()
 
@@ -43,14 +41,17 @@ while running:
     screen.blit(bg, (bg_x, 0))
     screen.blit(bg, (bg_x + 950, 0))
 
-    screen.blit(walk_right[player_anim_count], (player_x, 400))
-
     keys = pygame.key.get_pressed()
-    if keys[pygame.K_a]:
-        player_x -= player_speed
-    elif keys[pygame.K_d]:
-        player_x += player_speed
 
+    if keys[pygame.K_a] or keys[pygame.K_LEFT]:
+        screen.blit(walk_left[player_anim_count], (player_x, 400))
+    else:
+        screen.blit(walk_right[player_anim_count], (player_x, 400))
+
+    if (keys[pygame.K_a] or keys[pygame.K_LEFT]) and player_x > 50:
+        player_x -= player_speed
+    elif (keys[pygame.K_d] or keys[pygame.K_RIGHT]) and player_x < 200:
+        player_x += player_speed
 
     if player_anim_count == 3:
         player_anim_count = 0
