@@ -26,13 +26,11 @@ walk_right = [
     pygame.image.load('files/right/4.png')
 ]
 
-
 player_anim_count = 0
 bg_x = 0
 
 bg_sound = pygame.mixer.Sound('files/LOSTMANE.mp3')
 bg_sound.play()
-
 
 running = True
 while running:
