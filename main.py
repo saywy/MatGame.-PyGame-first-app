@@ -1,33 +1,33 @@
-from math import trunc
-
 import pygame
+
+image_path  = '/data/data/org.test.myapp/files/app/'
 
 clock = pygame.time.Clock()
 
 pygame.init()
 screen = pygame.display.set_mode((950, 555))
 pygame.display.set_caption('MatGame')
-icon = pygame.image.load('files/left/1.png').convert_alpha()
+icon = pygame.image.load(image_path + 'files/left/1.png').convert_alpha()
 pygame.display.set_icon(icon)
 
-bg = pygame.image.load('files/background.png').convert()
+bg = pygame.image.load(image_path + 'files/background.png').convert()
 
 # подгружаем ходьбу
 
 walk_left = [
-    pygame.image.load('files/left/1.png').convert_alpha(),
-    pygame.image.load('files/left/2.png').convert_alpha(),
-    pygame.image.load('files/left/3.png').convert_alpha(),
-    pygame.image.load('files/left/4.png').convert_alpha()
+    pygame.image.load(image_path + 'files/left/1.png').convert_alpha(),
+    pygame.image.load(image_path + 'files/left/2.png').convert_alpha(),
+    pygame.image.load(image_path + 'files/left/3.png').convert_alpha(),
+    pygame.image.load(image_path + 'files/left/4.png').convert_alpha()
 ]
 walk_right = [
-    pygame.image.load('files/right/1.png').convert_alpha(),
-    pygame.image.load('files/right/2.png').convert_alpha(),
-    pygame.image.load('files/right/3.png').convert_alpha(),
-    pygame.image.load('files/right/4.png').convert_alpha()
+    pygame.image.load(image_path + 'files/right/1.png').convert_alpha(),
+    pygame.image.load(image_path + 'files/right/2.png').convert_alpha(),
+    pygame.image.load(image_path + 'files/right/3.png').convert_alpha(),
+    pygame.image.load(image_path + 'files/right/4.png').convert_alpha()
 ]
 
-sigma = pygame.image.load('files/sigma.png').convert_alpha()
+sigma = pygame.image.load(image_path + 'files/sigma.png').convert_alpha()
 sigma_list_in_game = []
 
 player_anim_count = 0
@@ -40,13 +40,13 @@ player_y = 400
 is_jump = False
 jump_count = 9
 
-bg_sound = pygame.mixer.Sound('files/LOSTMANE.mp3')
+bg_sound = pygame.mixer.Sound(image_path + 'files/LOSTMANE.mp3')
 bg_sound.play()
 
 sigma_timer = pygame.USEREVENT + 1
 pygame.time.set_timer(sigma_timer, 2500)
 
-label = pygame.font.Font('files/karedoks-demo.regular.ttf', 40)
+label = pygame.font.Font(image_path + 'files/karedoks-demo.regular.ttf', 40)
 lose_lable = label.render("You've lost", False, (193, 196, 199))
 restart_lable = label.render("RESTART", False, (115, 132, 148))
 
@@ -54,7 +54,7 @@ restart_lable_rect = restart_lable.get_rect(topleft=(400, 500))
 
 bullets_left = 5
 
-bullet = pygame.image.load('files/патрон.png').convert_alpha()
+bullet = pygame.image.load(image_path + 'files/патрон.png').convert_alpha()
 bullets = []
 
 gameplay = True
