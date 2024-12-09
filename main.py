@@ -1,6 +1,6 @@
 import pygame
 
-
+clock = pygame.time.Clock()
 
 pygame.init()
 screen = pygame.display.set_mode((950, 555))
@@ -49,3 +49,5 @@ while running:
         if event.type == pygame.QUIT:
             running = False
             pygame.quit()
+
+    clock.tick(8)
