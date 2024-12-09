@@ -18,7 +18,10 @@ running = True
 
 while running:
 
-    screen.blit(square, (0, 0))
+    screen.blit(square, (10, 0))
+
+    pygame.draw.circle(screen, 'Orange', (250, 150), 30)
+
 
     pygame.display.update()
 
