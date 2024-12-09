@@ -114,9 +114,6 @@ while running:
         if bg_x == -950:
             bg_x = 0
 
-        if keys[pygame.K_b]:
-            bullets.append(bullet.get_rect(topleft=(player_x + 30, player_y + 10)))
-
         if bullets:
             for (i, el) in enumerate(bullets):
                 screen.blit(bullet, (el.x, el.y))
@@ -124,6 +121,12 @@ while running:
 
                 if el.x > 955:
                     bullets.pop(i)
+
+                if sigma_list_in_game:
+                    for (index, sigma_el) in enumerate(sigma_list_in_game):
+                        if el.colliderect(sigma_el):
+                            sigma_list_in_game.pop(index)
+                            bullets.pop(i)
 
 
     else:
@@ -146,5 +149,8 @@ while running:
             pygame.quit()
         if event.type == sigma_timer:
             sigma_list_in_game.append(sigma.get_rect(topleft=(955, 400)))
+
+        if gameplay and event.type == pygame.KEYUP and event.key == pygame.K_b:
+            bullets.append(bullet.get_rect(topleft=(player_x + 30, player_y + 10)))
 
     clock.tick(15)
