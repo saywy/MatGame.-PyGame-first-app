@@ -60,9 +60,12 @@ while running:
         player_rect = walk_left[0].get_rect(topleft=(player_x, player_y))
 
         if sigma_list_in_game:
-            for el in sigma_list_in_game:
+            for (i, el) in enumerate(sigma_list_in_game):
                 screen.blit(sigma, el)
                 el.x -= 10
+
+                if el.x < -20:
+                    sigma_list_in_game.pop(i)
 
                 if player_rect.colliderect(el):
                     gameplay = False
