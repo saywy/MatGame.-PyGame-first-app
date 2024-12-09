@@ -118,9 +118,12 @@ while running:
             bullets.append(bullet.get_rect(topleft=(player_x + 30, player_y + 10)))
 
         if bullets:
-            for el in bullets:
+            for (i, el) in enumerate(bullets):
                 screen.blit(bullet, (el.x, el.y))
                 el.x += 4
+
+                if el.x > 955:
+                    bullets.pop(i)
 
 
     else:
@@ -133,6 +136,7 @@ while running:
             gameplay = True
             player_x = 150
             sigma_list_in_game.clear()
+            bullets.clear()
 
     pygame.display.update()
 
