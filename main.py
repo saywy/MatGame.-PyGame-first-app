@@ -14,7 +14,6 @@ running = True
 
 while running:
 
-    # screen.fill((114, 157, 224))
 
     pygame.display.update()
 
@@ -22,6 +21,3 @@ while running:
         if event.type == pygame.QUIT:
             running = False
             pygame.quit()
-        elif event.type == pygame.KEYDOWN:
-            if event.key == pygame.K_a:
-                screen.fill((70, 44, 133))
