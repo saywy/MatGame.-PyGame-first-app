@@ -52,6 +52,8 @@ restart_lable = label.render("RESTART", False, (115, 132, 148))
 
 restart_lable_rect = restart_lable.get_rect(topleft=(400, 500))
 
+bullets_left = 5
+
 bullet = pygame.image.load('files/патрон.png').convert_alpha()
 bullets = []
 
@@ -140,6 +142,7 @@ while running:
             player_x = 150
             sigma_list_in_game.clear()
             bullets.clear()
+            bullets_left = 5
 
     pygame.display.update()
 
@@ -150,7 +153,8 @@ while running:
         if event.type == sigma_timer:
             sigma_list_in_game.append(sigma.get_rect(topleft=(955, 400)))
 
-        if gameplay and event.type == pygame.KEYUP and event.key == pygame.K_b:
+        if gameplay and event.type == pygame.KEYUP and event.key == pygame.K_b and bullets_left > 0:
             bullets.append(bullet.get_rect(topleft=(player_x + 30, player_y + 10)))
+            bullets_left -= 1
 
     clock.tick(15)
