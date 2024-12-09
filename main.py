@@ -1,17 +1,17 @@
 import pygame
 
 pygame.init()
-screen = pygame.display.set_mode((600, 300))
+screen = pygame.display.set_mode((950, 555))
 pygame.display.set_caption('PyGame')
 icon = pygame.image.load('files/i.png')
 pygame.display.set_icon(icon)
 
-player = pygame.image.load('files/i.png')
+bg = pygame.image.load('files/background.png')
 
 running = True
 while running:
 
-    screen.blit(player, (200, 200))
+    screen.blit(bg, (0, 0))
     pygame.display.update()
 
     for event in pygame.event.get():
