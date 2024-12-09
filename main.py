@@ -1,3 +1,5 @@
+from math import trunc
+
 import pygame
 
 clock = pygame.time.Clock()
@@ -44,57 +46,66 @@ bg_sound.play()
 sigma_timer = pygame.USEREVENT + 1
 pygame.time.set_timer(sigma_timer, 2500)
 
+gameplay = True
+
+
 running = True
 while running:
 
     screen.blit(bg, (bg_x, 0))
     screen.blit(bg, (bg_x + 950, 0))
 
-    player_rect = walk_left[0].get_rect(topleft=(player_x, player_y))
+    if gameplay:
 
-    if sigma_list_in_game:
-        for el in sigma_list_in_game:
-            screen.blit(sigma, el)
-            el.x -= 10
+        player_rect = walk_left[0].get_rect(topleft=(player_x, player_y))
 
-            if player_rect.colliderect(el):
-                print('You lose')
+        if sigma_list_in_game:
+            for el in sigma_list_in_game:
+                screen.blit(sigma, el)
+                el.x -= 10
 
-    keys = pygame.key.get_pressed()
+                if player_rect.colliderect(el):
+                    gameplay = False
 
-    if keys[pygame.K_a] or keys[pygame.K_LEFT]:
-        screen.blit(walk_left[player_anim_count], (player_x, player_y))
-    else:
-        screen.blit(walk_right[player_anim_count], (player_x, player_y))
+        keys = pygame.key.get_pressed()
 
-    if (keys[pygame.K_a] or keys[pygame.K_LEFT]) and player_x > 50:
-        player_x -= player_speed
-    elif (keys[pygame.K_d] or keys[pygame.K_RIGHT]) and player_x < 850:
-        player_x += player_speed
-
-    if not is_jump:
-        if keys[pygame.K_SPACE] or keys[pygame.K_UP]:
-            is_jump = True
-    else:
-        if jump_count >= -9:
-            if jump_count > 0:
-                player_y -= (jump_count ** 2) / 2
-            else:
-                player_y += (jump_count ** 2) / 2
-
-            jump_count -= 1
+        if keys[pygame.K_a] or keys[pygame.K_LEFT]:
+            screen.blit(walk_left[player_anim_count], (player_x, player_y))
         else:
-            is_jump = False
-            jump_count = 9
+            screen.blit(walk_right[player_anim_count], (player_x, player_y))
 
-    if player_anim_count == 3:
-        player_anim_count = 0
+        if (keys[pygame.K_a] or keys[pygame.K_LEFT]) and player_x > 50:
+            player_x -= player_speed
+        elif (keys[pygame.K_d] or keys[pygame.K_RIGHT]) and player_x < 850:
+            player_x += player_speed
+
+        if not is_jump:
+            if keys[pygame.K_SPACE] or keys[pygame.K_UP]:
+                is_jump = True
+        else:
+            if jump_count >= -9:
+                if jump_count > 0:
+                    player_y -= (jump_count ** 2) / 2
+                else:
+                    player_y += (jump_count ** 2) / 2
+
+                jump_count -= 1
+            else:
+                is_jump = False
+                jump_count = 9
+
+        if player_anim_count == 3:
+            player_anim_count = 0
+        else:
+            player_anim_count += 1
+
+        bg_x -= 2
+        if bg_x == -950:
+            bg_x = 0
+
     else:
-        player_anim_count += 1
+        screen.fill((87, 88, 89))
 
-    bg_x -= 2
-    if bg_x == -950:
-        bg_x = 0
 
     pygame.display.update()
 
