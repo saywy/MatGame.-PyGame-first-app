@@ -15,16 +15,16 @@ bg = pygame.image.load(image_path + 'files/background.png').convert()
 # подгружаем ходьбу
 
 walk_left = [
-    pygame.image.load(image_path + 'files/left/1.png').convert_alpha(),
-    pygame.image.load(image_path + 'files/left/2.png').convert_alpha(),
-    pygame.image.load(image_path + 'files/left/3.png').convert_alpha(),
-    pygame.image.load(image_path + 'files/left/4.png').convert_alpha()
+    pygame.image.load(image_path + 'files/l1.png').convert_alpha(),
+    pygame.image.load(image_path + 'files/l2.png').convert_alpha(),
+    pygame.image.load(image_path + 'files/l3.png').convert_alpha(),
+    pygame.image.load(image_path + 'files/l4.png').convert_alpha()
 ]
 walk_right = [
-    pygame.image.load(image_path + 'files/right/1.png').convert_alpha(),
-    pygame.image.load(image_path + 'files/right/2.png').convert_alpha(),
-    pygame.image.load(image_path + 'files/right/3.png').convert_alpha(),
-    pygame.image.load(image_path + 'files/right/4.png').convert_alpha()
+    pygame.image.load(image_path + 'files/r1.png').convert_alpha(),
+    pygame.image.load(image_path + 'files/r2.png').convert_alpha(),
+    pygame.image.load(image_path + 'files/r3.png').convert_alpha(),
+    pygame.image.load(image_path + 'files/r4.png').convert_alpha()
 ]
 
 sigma = pygame.image.load(image_path + 'files/sigma.png').convert_alpha()
