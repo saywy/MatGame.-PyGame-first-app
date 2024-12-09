@@ -5,27 +5,27 @@ clock = pygame.time.Clock()
 pygame.init()
 screen = pygame.display.set_mode((950, 555))
 pygame.display.set_caption('MatGame')
-icon = pygame.image.load('files/left/1.png')
+icon = pygame.image.load('files/left/1.png').convert_alpha()
 pygame.display.set_icon(icon)
 
-bg = pygame.image.load('files/background.png')
+bg = pygame.image.load('files/background.png').convert()
 
 # подгружаем ходьбу
 
 walk_left = [
-    pygame.image.load('files/left/1.png'),
-    pygame.image.load('files/left/2.png'),
-    pygame.image.load('files/left/3.png'),
-    pygame.image.load('files/left/4.png')
+    pygame.image.load('files/left/1.png').convert_alpha(),
+    pygame.image.load('files/left/2.png').convert_alpha(),
+    pygame.image.load('files/left/3.png').convert_alpha(),
+    pygame.image.load('files/left/4.png').convert_alpha()
 ]
 walk_right = [
-    pygame.image.load('files/right/1.png'),
-    pygame.image.load('files/right/2.png'),
-    pygame.image.load('files/right/3.png'),
-    pygame.image.load('files/right/4.png')
+    pygame.image.load('files/right/1.png').convert_alpha(),
+    pygame.image.load('files/right/2.png').convert_alpha(),
+    pygame.image.load('files/right/3.png').convert_alpha(),
+    pygame.image.load('files/right/4.png').convert_alpha()
 ]
 
-sigma = pygame.image.load('files/sigma.png')
+sigma = pygame.image.load('files/sigma.png').convert_alpha()
 sigma_x = 955
 
 player_anim_count = 0
