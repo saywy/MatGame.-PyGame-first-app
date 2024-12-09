@@ -18,13 +18,15 @@ walk_left = [
     pygame.image.load('files/left/3.png'),
     pygame.image.load('files/left/4.png')
 ]
-
 walk_right = [
     pygame.image.load('files/right/1.png'),
     pygame.image.load('files/right/2.png'),
     pygame.image.load('files/right/3.png'),
     pygame.image.load('files/right/4.png')
 ]
+
+sigma = pygame.image.load('files/sigma.png')
+sigma_x = 955
 
 player_anim_count = 0
 bg_x = 0
@@ -36,7 +38,7 @@ player_y = 400
 is_jump = False
 jump_count = 7
 
-bg_sound = pygame.mixer.Sound('files/LOSTMANE.mp3')
+bg_sound = pygame.mixer.Sound('files/SigmaSong.mp3')
 bg_sound.play()
 
 running = True
@@ -44,6 +46,8 @@ while running:
 
     screen.blit(bg, (bg_x, 0))
     screen.blit(bg, (bg_x + 950, 0))
+    screen.blit(sigma, (sigma_x, 400))
+
 
     keys = pygame.key.get_pressed()
 
@@ -80,6 +84,8 @@ while running:
     bg_x -= 2
     if bg_x == -950:
         bg_x = 0
+
+    sigma_x -= 10
 
     pygame.display.update()
 
