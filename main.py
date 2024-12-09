@@ -4,8 +4,8 @@ clock = pygame.time.Clock()
 
 pygame.init()
 screen = pygame.display.set_mode((950, 555))
-pygame.display.set_caption('PyGame')
-icon = pygame.image.load('files/i.png')
+pygame.display.set_caption('MatGame')
+icon = pygame.image.load('files/left/1.png')
 pygame.display.set_icon(icon)
 
 bg = pygame.image.load('files/background.png')
@@ -28,12 +28,15 @@ walk_right = [
 
 
 player_anim_count = 0
+bg_x = 0
 
 
 running = True
 while running:
 
-    screen.blit(bg, (0, 0))
+    screen.blit(bg, (bg_x, 0))
+    screen.blit(bg, (bg_x + 950, 0))
+
     screen.blit(walk_right[player_anim_count], (300, 400))
 
     if player_anim_count == 3:
@@ -41,7 +44,9 @@ while running:
     else:
         player_anim_count += 1
 
-
+    bg_x -= 2
+    if bg_x == -950:
+        bg_x = 0
 
     pygame.display.update()
 
@@ -50,4 +55,4 @@ while running:
             running = False
             pygame.quit()
 
-    clock.tick(8)
+    clock.tick(15)
