@@ -48,6 +48,9 @@ pygame.time.set_timer(sigma_timer, 2500)
 
 label = pygame.font.Font('files/karedoks-demo.regular.ttf', 40)
 lose_lable = label.render("You've lost", False, (193, 196, 199))
+restart_lable = label.render("RESTART", False, (115, 132, 148))
+
+restart_lable_rect = restart_lable.get_rect(topleft=(400, 500))
 
 gameplay = True
 
@@ -112,6 +115,12 @@ while running:
     else:
         screen.fill((87, 88, 89))
         screen.blit(lose_lable, (400, 250))
+        screen.blit(restart_lable, restart_lable_rect)
+
+
+        mouse = pygame.mouse.get_pos()
+        if restart_lable_rect.collidepoint(mouse):
+            gameplay = True
 
 
     pygame.display.update()
