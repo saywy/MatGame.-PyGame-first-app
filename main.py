@@ -119,8 +119,10 @@ while running:
 
 
         mouse = pygame.mouse.get_pos()
-        if restart_lable_rect.collidepoint(mouse):
+        if restart_lable_rect.collidepoint(mouse) and pygame.mouse.get_pressed()[0]:
             gameplay = True
+            player_x = 150
+            sigma_list_in_game.clear()
 
 
     pygame.display.update()
