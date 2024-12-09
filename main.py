@@ -157,4 +157,4 @@ while running:
             bullets.append(bullet.get_rect(topleft=(player_x + 30, player_y + 10)))
             bullets_left -= 1
 
-    clock.tick(15)
+    clock.tick(20)
